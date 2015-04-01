@@ -21,40 +21,39 @@ import csc.daonjpa.java.service.CustomerService;
 @Controller
 @SessionAttributes({ "user", "roleuser" })
 public class LoginController {
-	
+
 	@Autowired
 	CustomerService customerService;
-	
-	@RequestMapping( value = "/login", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String doLogin() {
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
 	public ModelAndView checkLogin(@ModelAttribute("cus") Customer cus,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView md = new ModelAndView();
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
 		Customer customer = customerService.getCustomerByLoginId(username);
-		List<Account> listAccount=null;
-		if(customer != null && customer.getPassword().equals(password)) {
+		List<Account> listAccount = null;
+		if (customer != null && customer.getPassword().equals(password)) {
 			// success
-			HttpSession session=request.getSession();
-			md=new ModelAndView("home");
-			listAccount=((Customer) customer).getAccounts();
-			session.setAttribute("user",customer);
-			md.addObject("listAccount",listAccount);
+			HttpSession session = request.getSession();
+			md = new ModelAndView("home");
+			listAccount = ((Customer) customer).getAccounts();
+			session.setAttribute("user", customer);
+			md.addObject("listAccount", listAccount);
 			return md;
 		} else {
-			//false
-			md=new ModelAndView("login");
-			md.addObject("message","Wrong Username and Password");
+			// false
+			md = new ModelAndView("login");
+			md.addObject("message", "Wrong Username and Password");
 			return md;
 		}
-		
-		
+
 	}
 
 }

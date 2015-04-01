@@ -27,12 +27,12 @@ import csc.daonjpa.java.service.TransferService;
 
 @Controller
 public class TransferController {
-	
+
 	@Autowired
 	TransferService transferService;
-	
+
 	private List<Account> listAccount;
-	
+
 	public List<Account> getListAccount() {
 		return listAccount;
 	}
@@ -41,53 +41,51 @@ public class TransferController {
 		this.listAccount = listAccount;
 	}
 
-	@RequestMapping( value = "/transferview", method = RequestMethod.GET)
-	public ModelAndView transfer(Model model,
-			HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session=request.getSession();
+	@RequestMapping(value = "/transferview", method = RequestMethod.GET)
+	public ModelAndView transfer(Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		HttpSession session = request.getSession();
 		Customer cus = (Customer) session.getAttribute("user");
-		List<Bank> listBank=null;
-		ModelAndView md=new ModelAndView("transfermoney");
+		List<Bank> listBank = null;
+		ModelAndView md = new ModelAndView("transfermoney");
 		listAccount = ((Customer) cus).getAccounts();
-		listBank=transferService.getListBank();
-		md.addObject("listbank",listBank);
-		md.addObject("listaccount",listAccount);
+		listBank = transferService.getListBank();
+		md.addObject("listbank", listBank);
+		md.addObject("listaccount", listAccount);
 		return md;
 	}
-	
-	@RequestMapping( value = "/ajaxGetbranch/{id}", method = RequestMethod.GET)
-	public ModelAndView getBranchbybank(@PathVariable(value="id") int id,
+
+	@RequestMapping(value = "/ajaxGetbranch/{id}", method = RequestMethod.GET)
+	public ModelAndView getBranchbybank(@PathVariable(value = "id") int id,
 			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView md=new ModelAndView("ajaxGetbranch");
-		List<Branch> listBranch=null;
-		listBranch=transferService.getBracnchByBank(id);
-		md.addObject("listbranch",listBranch);
+		ModelAndView md = new ModelAndView("ajaxGetbranch");
+		List<Branch> listBranch = null;
+		listBranch = transferService.getBracnchByBank(id);
+		md.addObject("listbranch", listBranch);
 		return md;
 	}
-	
-	@RequestMapping( value = "/submitTransfer", method = RequestMethod.POST)
-	public ModelAndView transfer(@ModelAttribute("log") LogTransaction  log,
+
+	@RequestMapping(value = "/submitTransfer", method = RequestMethod.POST)
+	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
 			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView md=new ModelAndView("transfermoney");
-		String accountname=request.getParameter("accountname").trim();
-		long amount=Long.parseLong(request.getParameter("amount"));
+		ModelAndView md = new ModelAndView("transfermoney");
+		String accountname = request.getParameter("accountname").trim();
+		long amount = Long.parseLong(request.getParameter("amount"));
 		Date date = new Date();
-		//SimpleDateFormat ft =  new SimpleDateFormat("hh:mm:ss DD/MM/YY");
-		long idbranch=Long.parseLong(request.getParameter("slbranch"));
-		long idsend=Long.parseLong(request.getParameter("sendaccount"));
+		// SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss DD/MM/YY");
+		long idbranch = Long.parseLong(request.getParameter("slbranch"));
+		long idsend = Long.parseLong(request.getParameter("sendaccount"));
 		Account account = transferService.checkAccount(accountname);
-		if(account!=null && idsend!=account.getId())
-		{
-			transferService.insertTransaction(amount, date, idbranch, account.getId(), idsend);
-			md.addObject("message","Transfer Successfully");
+		if (account != null && idsend != account.getId()) {
+			transferService.insertTransaction(amount, date, idbranch,
+					account.getId(), idsend);
+			md.addObject("message", "Transfer Successfully");
+			return md;
+		} else {
+			md.addObject("message", "Transfer unseccessfull");
 			return md;
 		}
-		else
-		{
-			md.addObject("message","Transfer unseccessfull");
-			return md;
-		}
-		
+
 	}
-	
+
 }
