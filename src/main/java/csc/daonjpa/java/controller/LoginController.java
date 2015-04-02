@@ -30,30 +30,49 @@ public class LoginController {
 		return "login";
 	}
 
+//	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
+//	public ModelAndView checkLogin(@ModelAttribute("cus") Customer cus,
+//			HttpServletRequest request, HttpServletResponse response) {
+//		ModelAndView md = new ModelAndView();
+//		String username = request.getParameter("username");
+//		String password = request.getParameter("password");
+//
+//		Customer customer = customerService.getCustomerByLoginId(username);
+//		List<Account> listAccount = null;
+//		if (customer != null && customer.getPassword().equals(password)) {
+//			// success
+//			HttpSession session = request.getSession();
+//			session.setAttribute("user", customer);
+//			
+//			md = new ModelAndView("home");
+//			listAccount = ((Customer) customer).getAccounts();
+//			md.addObject("listAccount", listAccount);
+//			return md;
+//		} else {
+//			// false
+//			md = new ModelAndView("login");
+//			md.addObject("message", "Wrong Username and Password");
+//			return md;
+//		}
+//
+//	}
+	
 	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-	public ModelAndView checkLogin(@ModelAttribute("cus") Customer cus,
+	public String checkLogin(@ModelAttribute("cus") Customer cus,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView md = new ModelAndView();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		
 		Customer customer = customerService.getCustomerByLoginId(username);
-		List<Account> listAccount = null;
 		if (customer != null && customer.getPassword().equals(password)) {
 			// success
 			HttpSession session = request.getSession();
-			md = new ModelAndView("home");
-			listAccount = ((Customer) customer).getAccounts();
-			session.setAttribute("user", customer);
-			md.addObject("listAccount", listAccount);
-			return md;
-		} else {
-			// false
-			md = new ModelAndView("login");
-			md.addObject("message", "Wrong Username and Password");
-			return md;
-		}
-
+			
+			return "forward:/home";
+		} 
+		return "login";
+		
 	}
 
 }
