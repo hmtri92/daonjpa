@@ -46,8 +46,15 @@ public class TransferController {
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		Customer cus = (Customer) session.getAttribute("user");
-		List<Bank> listBank = null;
 		ModelAndView md = new ModelAndView("transfermoney");
+		
+		// Check login
+		if (cus == null) {
+			md.setViewName("login");
+			return md;
+		}
+		
+		List<Bank> listBank = null;
 		listAccount = ((Customer) cus).getAccounts();
 		listBank = transferService.getListBank();
 		md.addObject("listbank", listBank);
@@ -69,9 +76,19 @@ public class TransferController {
 	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView md = new ModelAndView("transfermoney");
+		
+		boolean recentAccountState = request.getParameter("recentAccount") != null;
+		
+		if (recentAccountState == true) {
+			
+		} else {
+			
+		}
+		
 		String accountname = request.getParameter("accountname").trim();
 		long amount = Long.parseLong(request.getParameter("amount"));
 		Date date = new Date();
+		
 		// SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss DD/MM/YY");
 		long idbranch = Long.parseLong(request.getParameter("slbranch"));
 		long idsend = Long.parseLong(request.getParameter("sendaccount"));
@@ -87,5 +104,29 @@ public class TransferController {
 		}
 
 	}
-
+/*	@RequestMapping(value = "/submitTransfer", method = RequestMethod.POST)
+	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
+			HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView md = new ModelAndView("transfermoney");
+		
+		String accountname = request.getParameter("accountname").trim();
+		long amount = Long.parseLong(request.getParameter("amount"));
+		Date date = new Date();
+		
+		// SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss DD/MM/YY");
+		long idbranch = Long.parseLong(request.getParameter("slbranch"));
+		long idsend = Long.parseLong(request.getParameter("sendaccount"));
+		Account account = transferService.checkAccount(accountname);
+		if (account != null && idsend != account.getId()) {
+			transferService.insertTransaction(amount, date, idbranch,
+					account.getId(), idsend);
+			md.addObject("message", "Transfer Successfully");
+			return md;
+		} else {
+			md.addObject("message", "Transfer unseccessfull");
+			return md;
+		}
+		
+	}
+*/
 }

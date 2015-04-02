@@ -10,7 +10,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"> <img src="images/logo.png"
+			<a class="navbar-brand" href="home"> <img src="images/logo.png"
 				width="229" height="74" alt="">
 			</a>
 		</div>
@@ -23,6 +23,7 @@
 			</ul>
 			<ul style="font-size: 18px" class="nav navbar-nav navbar-right">				
 				<li><a href="editCustomerInfo">Welcome  ${sessionScope.user.loginId }</a></li>
+				<li><a href="logout">Sign out</a></li>
 			</ul>
 		</div>
 	</div>

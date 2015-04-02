@@ -58,7 +58,7 @@ public class LoginController {
 //	}
 	
 	@RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-	public String checkLogin(@ModelAttribute("cus") Customer cus,
+	public ModelAndView checkLogin(@ModelAttribute("cus") Customer cus,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView md = new ModelAndView();
 		String username = request.getParameter("username");
@@ -68,11 +68,22 @@ public class LoginController {
 		if (customer != null && customer.getPassword().equals(password)) {
 			// success
 			HttpSession session = request.getSession();
+			session.setAttribute("user", customer);
 			
-			return "forward:/home";
+			System.out.println(customer.getFirstName() + " " + customer.getLastName());
+			md.setViewName("forward:/home");
+			
+			return md;
 		} 
-		return "login";
+		md.setViewName("login");
 		
+		return md;
 	}
-
+	
+	@RequestMapping( value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "login";
+	}
 }

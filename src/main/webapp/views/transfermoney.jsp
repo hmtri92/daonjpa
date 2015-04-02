@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="portlet-body">
-						<form class="form-horizontal" action="submitTransfer" method="post" style="padding 0 auto">
+						<form class="form-horizontal" action="submitTransfer" method="POST" style="padding 0 auto">
 							<div class="form-group">
 								<label class="col-md-3 control-label" for="sendaccount">Account: </label>
 								<div class="col-md-5">
@@ -61,7 +61,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">Amount: </label>
+								<label class="col-md-3 control-label">Amount: </label>
 								<div class="col-md-5">
 									<input type="text" name="amount" /><br>
 								</div>
@@ -69,14 +69,14 @@
 							
 							<!-- Choose target account or new account -->
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">Target Account: </label>
+								<label class="col-md-3 control-label">Target Account: </label>
 								<div class="col-md-5">
-									<input type="checkbox" name="recentAccount" />
+									<input type="checkbox" id="recentAccount" name="recentAccount" />
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">Recent Account: </label>
+								<label class="col-md-3 control-label">Recent Account: </label>
 								<div class="col-md-5">
 									<select class="form-control input-medium">
 										<option></option>
@@ -85,14 +85,14 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">New account: </label>
+								<label class="col-md-3 control-label">New account: </label>
 								<div class="col-md-5">
 									<input type="text" name="accountname" /><br>
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">Bank: </label>
+								<label class="col-md-3 control-label">Bank: </label>
 								<div class="col-md-5">
 									<select id="slbank" name="slbank" class="form-control input-medium">
 										<option value="-1">--Choose Bank--</option>
@@ -104,7 +104,7 @@
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label" for="radio">Branch: </label>
+								<label class="col-md-3 control-label">Branch: </label>
 								<div class="col-md-5">
 									<select id="slbranch" name="slbranch" class="form-control input-medium">
 										<option value="-1">--Choose Branch--</option>
