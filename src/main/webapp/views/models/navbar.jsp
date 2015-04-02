@@ -21,10 +21,17 @@
 				<li><a href="#">Services</a></li>
 				<li><a href="#">Contact</a></li>
 			</ul>
-			<ul style="font-size: 18px" class="nav navbar-nav navbar-right">				
-				<li><a href="editCustomerInfo">Welcome  ${sessionScope.user.loginId }</a></li>
-				<li><a href="logout">Sign out</a></li>
-			</ul>
+			<!-- Dropdow menu -->
+			<ul class="nav navbar-nav navbar-right">
+		        <li class="dropdown">
+		          <a style="font-size: 18px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		          	<i class="glyphicon glyphicon-th-large"></i>  ${sessionScope.user.loginId } <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li style="padding-bottom: 10px"><a href="editCustomerInfo"><i class="glyphicon glyphicon-user"></i>  Edit profile</a></li>
+		            <li><a href="logout"><i class="glyphicon glyphicon-off"></i>  Sign out</a></li>
+		          </ul>
+		        </li>
+	      	</ul>
 		</div>
 	</div>
 </nav>

@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,6 +20,12 @@ public class Customer implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Transient
+	private String newPassword;
+	
+	@Transient
+	private String confirmPassword;
 
 	@Id
 	@Column(name = "loginId")
@@ -118,8 +125,22 @@ public class Customer implements Serializable {
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
 	}
+	
+	public String getNewPassword() {
+		return newPassword;
+	}
 
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
 	public Customer() {
 		super();

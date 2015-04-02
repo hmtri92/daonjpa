@@ -1,6 +1,5 @@
 package csc.daonjpa.java.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +21,6 @@ import csc.daonjpa.java.domain.Bank;
 import csc.daonjpa.java.domain.Branch;
 import csc.daonjpa.java.domain.Customer;
 import csc.daonjpa.java.domain.LogTransaction;
-import csc.daonjpa.java.service.AccountService;
 import csc.daonjpa.java.service.TransferService;
 
 @Controller

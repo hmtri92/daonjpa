@@ -70,7 +70,7 @@
 									</div>
 									<!--/span-->
 								</div>
-								<!--/row-->
+								
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -87,39 +87,36 @@
 									</div>
 									<!--/span-->
 								</div>
-								<!--/row-->
+								
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="control-label">Password</label>
-											<form:input type="password" name="password" path="password" class="form-control"/>
+											<input type="password" name="password" id="password" class="form-control"/>
 										</div>
 									</div>
 								</div>
 								
-								<h2>Sơn coi phần code dưới để cho người dùng có thể đổi password nhe</h2>
-								
-								<%-- <div class="row">
+								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="control-label">New password</label>
-											<form:input type="password" name="newpassword" path="newpassword" class="form-control"/>
-											<span class="help-block">
-											Select your gender </span>
+											<form:input type="password" name="newPassword" path="newPassword" class="form-control"/>
 										</div>
 									</div>
 									<!--/span-->
 									<div class="col-md-6">
 										<div class="form-group">
-											<label class="control-label">RePassword</label>
-											<form:input type="password" name="RePassword" path="RePassword" class="form-control"/>
+											<label class="control-label">Confirm new password</label>
+											<form:input type="password" name="confirmPassword" path="confirmPassword" class="form-control"/>
+											<span id="messagePassword" class="help-block font-red-flamingo"></span>
 										</div>
 									</div>
 									<!--/span-->
 								</div>
-							</div> --%>
+							</div>
 							<div class="form-actions right">
-								<button type="button" class="btn default">Cancel</button>
+								<button type="button" class="btn default" onclick="goHome();">Cancel</button>
 								<button id="registerSubmit" type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button>
 							</div>
 						</form:form>
@@ -128,6 +125,24 @@
 				</div>
 			</div>
 	</div>
+	
+	<script type="text/javascript">
+		function goHome() {
+			location.href = "home";
+		}
+
+		$( "#confirmPassword" ).keyup(function() {				
+			if ($("#newPassword").val() != this.value) {
+				$("#messagePassword").text("Password is fail");
+				$("#registerSubmit").attr('disabled','disabled');
+			} else {
+				$("#messagePassword").text("");
+				$("#registerSubmit").removeAttr('disabled');
+			}
+		});
+
+		
+	</script>
 		
 		<!-- start footer -->
 	<%@ include file="models/footer.jsp"%>

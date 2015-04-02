@@ -22,4 +22,12 @@
 		<property name="prefix" value="/views/" />
 		<property name="suffix" value=".jsp"/>	
 	</bean>
+	
+	<mvc:resources mapping="/js/**" location="/resources/js/" />
+	<mvc:resources mapping="/css/**" location="/resources/css/" />
+	<mvc:resources mapping="/images/**" location="/resources/images/" />
+	<mvc:resources mapping="/fonts/**" location="/resources/fonts/" />
+	<mvc:resources mapping="/docs/**" location="/resources/docs/" />
+	<mvc:resources mapping="/lugins/**" location="/resources/lugins/" />
+	
 </beans>
