@@ -5,14 +5,6 @@
 	<persistence-unit name="daonjpa"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>csc.daonjpa.java.domain.Customer</class>
-		<class>csc.daonjpa.java.domain.Bank</class>
-		<class>csc.daonjpa.java.domain.BaseInfo</class>
-		<class>csc.daonjpa.java.domain.Branch</class>
-		<class>csc.daonjpa.java.domain.LogTransaction</class>
-		<class>csc.daonjpa.java.domain.Card</class>
-		<class>csc.daonjpa.java.domain.Account</class>
-		<class>csc.daonjpa.java.domain.TagetAccount</class>
 		<properties>
 			<property name="hibernate.connection.charSet" value="UTF-8" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/project3"/>
