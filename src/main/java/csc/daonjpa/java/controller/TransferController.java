@@ -21,6 +21,7 @@ import csc.daonjpa.java.domain.Bank;
 import csc.daonjpa.java.domain.Branch;
 import csc.daonjpa.java.domain.Customer;
 import csc.daonjpa.java.domain.LogTransaction;
+import csc.daonjpa.java.service.BankService;
 import csc.daonjpa.java.service.TransferService;
 
 @Controller
@@ -28,6 +29,9 @@ public class TransferController {
 
 	@Autowired
 	TransferService transferService;
+	
+	@Autowired
+	BankService bankService;
 
 	private List<Account> listAccount;
 
@@ -54,7 +58,7 @@ public class TransferController {
 		
 		List<Bank> listBank = null;
 		listAccount = ((Customer) cus).getAccounts();
-		listBank = transferService.getListBank();
+		listBank = bankService.getListBank();
 		md.addObject("listbank", listBank);
 		md.addObject("listaccount", listAccount);
 		return md;

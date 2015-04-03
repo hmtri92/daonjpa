@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +30,10 @@ public class Branch {
 	
 	@OneToMany(mappedBy="branch")
 	private List<LogTransaction> transaction;
+	
+	@OneToMany (mappedBy = "branch")
+	private List<TargetAccount> targetAccounts;
+	
 	public Branch() {
 		super();
 		// TODO Auto-generated constructor stub

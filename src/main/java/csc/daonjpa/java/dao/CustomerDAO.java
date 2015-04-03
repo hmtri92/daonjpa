@@ -30,5 +30,15 @@ public class CustomerDAO {
 		customer.setLastName(cus.getLastName());
 		return customer;
 	}
+	
+	@Transactional
+	public boolean createCustomer(Customer customer) {
+		try {
+			entityManager.persist(customer);
+			return true;			
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 }

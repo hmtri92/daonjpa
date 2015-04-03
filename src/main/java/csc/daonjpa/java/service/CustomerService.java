@@ -20,5 +20,11 @@ public class CustomerService {
 		 return customerDAO.updateCustomerInfoById(cus);
 	}
 	
-	
+	public boolean createNewCustomer(Customer customer) {
+		try {
+			return customerDAO.createCustomer(customer);
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

@@ -69,4 +69,30 @@ public class CustomerController {
 			return md;
 		}
 	}
+	
+	@RequestMapping (value = "/doRegister", method = RequestMethod.POST)
+	public ModelAndView doregister(@ModelAttribute("customer") Customer customer, 
+			HttpServletRequest request, HttpServletResponse respose) {
+		ModelAndView model = new ModelAndView();
+		
+		try {
+			if (customerService.createNewCustomer(customer)) {
+				model.setViewName("login");
+				return model;
+			} else {
+				model.setViewName("register");
+				model.addObject("message", "Can't create customer");
+				model.addObject("customer", customer);
+				
+				return model;				
+			}
+			
+		} catch (Exception e) {
+			model.setViewName("register");
+			model.addObject("message", "Can't create customer");
+			model.addObject("customer", customer);
+			
+			return model;
+		}
+	}
 }

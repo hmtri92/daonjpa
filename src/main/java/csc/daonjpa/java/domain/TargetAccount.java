@@ -6,42 +6,55 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table (name = "tagetAccount")
-public class TagetAccount {
+public class TargetAccount {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column (name = "id_taget")
 	private long id_taget;
 	
-	@OneToOne
+	@NotEmpty
+	@ManyToOne
 	@JoinColumn (name = "id_bank")
 	private Bank bank;
 	
-	@OneToOne
+	@NotEmpty
+	@ManyToOne
 	@JoinColumn (name = "id_branch")
 	private Branch branch;
 	
-	@OneToOne
-	@JoinColumn (name = "id_account")
-	private Account account;
+	@NotEmpty
+	@ManyToOne
+	@JoinColumn (name = "accountNumber")
+	private Account accountNumber;
+	
+	@NotEmpty
+	@ManyToOne
+	@JoinColumn (name = "accountOwner")
+	private Account accountOwner;
 
-	public TagetAccount() {
+	public TargetAccount() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TagetAccount(long id_taget, Bank bank, Branch branch, Account account) {
+	public TargetAccount(long id_taget, Bank bank, Branch branch,
+			Account accountNumber, Account accountOwner) {
 		super();
 		this.id_taget = id_taget;
 		this.bank = bank;
 		this.branch = branch;
-		this.account = account;
+		this.accountNumber = accountNumber;
+		this.accountOwner = accountOwner;
 	}
+
 
 
 	public long getId_taget() {
@@ -68,13 +81,19 @@ public class TagetAccount {
 		this.branch = branch;
 	}
 
-	public Account getAccount() {
-		return account;
+	public Account getAccountNumber() {
+		return accountNumber;
 	}
 
-
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountNumber(Account accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
+	public Account getAccountOwner() {
+		return accountOwner;
+	}
+
+	public void setAccountOwner(Account accountOwner) {
+		this.accountOwner = accountOwner;
+	}
 }

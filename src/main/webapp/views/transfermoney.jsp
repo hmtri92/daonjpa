@@ -40,12 +40,6 @@
 						<div class="caption">
 							<i class="fa fa-cogs"></i>Transfer
 						</div>
-						<div class="tools">
-							<a href="javascript:;" class="collapse"> </a> <a
-								href="#portlet-config" data-toggle="modal" class="config"> </a>
-							<a href="javascript:;" class="reload"> </a> <a
-								href="javascript:;" class="remove"> </a>
-						</div>
 					</div>
 					<div class="portlet-body">
 						<form class="form-horizontal" action="submitTransfer" method="POST" style="padding 0 auto">
@@ -123,8 +117,6 @@
 									<button class="btn btn-primary" type="button">Cancel </button>
 								</div>
 							</div>
-							
-							
 						</form>
 					</div>
 				</div>

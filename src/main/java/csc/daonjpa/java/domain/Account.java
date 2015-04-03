@@ -7,8 +7,6 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -48,25 +46,13 @@ public class Account extends BaseInfo implements Serializable {
 
 	@OneToMany(mappedBy = "sendAccount")
 	private List<LogTransaction> sendAccount;
+	
+	@OneToMany (mappedBy = "accountNumber")
+	private List<TargetAccount> accountNumbers;
+	
+	@OneToMany (mappedBy = "accountOwner")
+	private List<TargetAccount> accountOwner;
 
-	/**
-	 * Required constructor
-	 */
-	/*public Account() {
-		
-	}*/
-
-	/*public Account(long Id, String number, Long availableAmount,
-			String accountName, String accountType, Customer customer,
-			List<LogTransaction> sendAccount,List<LogTransaction> receiveAccount) {
-		super(Id, number, availableAmount);
-		this.id=Id;
-		this.accountName = accountName;
-		this.accountType = accountType;
-		this.customer = customer;
-		this.receiveAccount = receiveAccount;
-		this.sendAccount = sendAccount;
-	}*/
 
 	public Customer getCustomer() {
 		return customer;

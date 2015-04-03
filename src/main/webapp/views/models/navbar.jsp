@@ -18,8 +18,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul style="font-size: 18px" class="nav navbar-nav">
 				<li><a href="transferview">Transfer Money</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="targetAccount">Target Account</a></li>
 			</ul>
 			<!-- Dropdow menu -->
 			<ul class="nav navbar-nav navbar-right">

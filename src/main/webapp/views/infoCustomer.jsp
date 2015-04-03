@@ -31,99 +31,89 @@
 	<%@ include file="models/navbar.jsp"%>
 
 		
-		<div class="container">
-			<div class="tab-pane" id="tab_1">
-				<div class="portlet box blue">
-					<div class="portlet-title">
-						<div class="caption">
-							<i class="fa fa-gift"></i>Edit profile
-						</div>
-						<div class="tools">
-							<a href="javascript:;" class="collapse">
-							</a>
-							<a href="#portlet-config" data-toggle="modal" class="config">
-							</a>
-							<a href="javascript:;" class="reload">
-							</a>
-							<a href="javascript:;" class="remove">
-							</a>
-						</div>
-					</div>
-					<div class="portlet-body form">
-						<!-- BEGIN FORM-->
-						<form:form id="frmRegister" class="horizontal-form" action="edit" modelAttribute="customer"  method="POST">
-							<div class="form-body">
-								<h3 class="form-section">Person Info</h3>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">First Name</label>
-											<form:input type="text" name="firstName" path="firstName" class="form-control"/>
-										</div>
-									</div>
-									<!--/span-->
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">Last Name</label>
-											<form:input type="text" name="lastName" path="lastName" class="form-control"/>
-										</div>
-									</div>
-									<!--/span-->
-								</div>
-								
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">Address</label>
-											<form:input type="text" name="address" path="address" class="form-control"/>
-										</div>
-									</div>
-									<!--/span-->
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">CellPhone</label>
-											<form:input type="text" name="phone" path="phone" class="form-control"/>
-										</div>
-									</div>
-									<!--/span-->
-								</div>
-								
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">Password</label>
-											<input type="password" name="password" id="password" class="form-control"/>
-										</div>
-									</div>
-								</div>
-								
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">New password</label>
-											<form:input type="password" name="newPassword" path="newPassword" class="form-control"/>
-										</div>
-									</div>
-									<!--/span-->
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">Confirm new password</label>
-											<form:input type="password" name="confirmPassword" path="confirmPassword" class="form-control"/>
-											<span id="messagePassword" class="help-block font-red-flamingo"></span>
-										</div>
-									</div>
-									<!--/span-->
-								</div>
-							</div>
-							<div class="form-actions right">
-								<button type="button" class="btn default" onclick="goHome();">Cancel</button>
-								<button id="registerSubmit" type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button>
-							</div>
-						</form:form>
-						<!-- END FORM-->
+	<div class="container">
+		<div class="tab-pane" id="tab_1">
+			<div class="portlet box blue">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="fa fa-gift"></i>Edit profile
 					</div>
 				</div>
+				<div class="portlet-body form">
+					<!-- BEGIN FORM-->
+					<form:form id="frmRegister" class="horizontal-form" action="edit" modelAttribute="customer"  method="POST">
+						<div class="form-body">
+							<h3 class="form-section">Person Info</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">First Name</label>
+										<form:input type="text" name="firstName" path="firstName" class="form-control"/>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Last Name</label>
+										<form:input type="text" name="lastName" path="lastName" class="form-control"/>
+									</div>
+								</div>
+								<!--/span-->
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Address</label>
+										<form:input type="text" name="address" path="address" class="form-control"/>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">CellPhone</label>
+										<form:input type="text" name="phone" path="phone" class="form-control"/>
+									</div>
+								</div>
+								<!--/span-->
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Password</label>
+										<input type="password" name="password" id="password" class="form-control"/>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">New password</label>
+										<form:input type="password" name="newPassword" path="newPassword" class="form-control"/>
+									</div>
+								</div>
+								<!--/span-->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Confirm new password</label>
+										<form:input type="password" name="confirmPassword" path="confirmPassword" class="form-control"/>
+										<span id="messagePassword" class="help-block font-red-flamingo"></span>
+									</div>
+								</div>
+								<!--/span-->
+							</div>
+						</div>
+						<div class="form-actions right">
+							<button type="button" class="btn default" onclick="goHome();">Cancel</button>
+							<button id="registerSubmit" type="submit" class="btn blue"><i class="fa fa-check"></i> Save</button>
+						</div>
+					</form:form>
+					<!-- END FORM-->
+				</div>
 			</div>
+		</div>
 	</div>
 	
 	<script type="text/javascript">
@@ -144,7 +134,7 @@
 		
 	</script>
 		
-		<!-- start footer -->
+	<!-- start footer -->
 	<%@ include file="models/footer.jsp"%>
 </body>
 </html>
