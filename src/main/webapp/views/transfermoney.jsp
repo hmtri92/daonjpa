@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet" href="css/myStyle.css">
 <link rel="stylesheet" href="css/logo-nav.css">
-<link rel="stylesheet" href="css/components.css">
+<!-- <link rel="stylesheet" href="css/components.css"> -->
 <link rel="stylesheet" href="css/plugins.css">
 <link rel="stylesheet" href="css/bootstrap-switch.css">
 
@@ -34,18 +34,18 @@
 	<div class="container">
 		<!-- BEGIN PAGE CONTENT-->
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="portlet blue-madison box">
-					<div class="portlet-title">
+			<div class="col-md-7 col-md-offset-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
 						<div class="caption">
 							<i class="fa fa-cogs"></i>Transfer
 						</div>
 					</div>
-					<div class="portlet-body">
+					<div class="panel-body">
 						<form class="form-horizontal" action="submitTransfer" method="POST" style="padding 0 auto">
 							<div class="form-group">
 								<label class="col-md-3 control-label" for="sendaccount">Account: </label>
-								<div class="col-md-5">
+								<div class="col-md-8">
 									<select name="sendaccount" class="form-control input-medium">
 										<c:forEach var="item" items="${listaccount}">
 											<option value="${item.id}">${item.accountName}</option>
@@ -56,22 +56,22 @@
 							
 							<div class="form-group">
 								<label class="col-md-3 control-label">Amount: </label>
-								<div class="col-md-5">
-									<input type="text" name="amount" /><br>
+								<div class="col-md-8">
+									<input type="text" name="amount" class="form-control"/><br>
 								</div>
 							</div>
 							
 							<!-- Choose target account or new account -->
 							<div class="form-group">
 								<label class="col-md-3 control-label">Target Account: </label>
-								<div class="col-md-5">
+								<div class="col-md-8">
 									<input type="checkbox" id="recentAccount" name="recentAccount" />
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label class="col-md-3 control-label">Recent Account: </label>
-								<div class="col-md-5">
+								<div class="col-md-8">
 									<select class="form-control input-medium">
 										<option></option>
 									</select> 
@@ -80,14 +80,14 @@
 							
 							<div class="form-group">
 								<label class="col-md-3 control-label">New account: </label>
-								<div class="col-md-5">
-									<input type="text" name="accountname" /><br>
+								<div class="col-md-8">
+									<input type="text" name="accountname" class="form-control" /><br>
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label class="col-md-3 control-label">Bank: </label>
-								<div class="col-md-5">
+								<div class="col-md-8">
 									<select id="slbank" name="slbank" class="form-control input-medium">
 										<option value="-1">--Choose Bank--</option>
 										<c:forEach var="item" items="${listbank}">
@@ -99,7 +99,7 @@
 							
 							<div class="form-group">
 								<label class="col-md-3 control-label">Branch: </label>
-								<div class="col-md-5">
+								<div class="col-md-8">
 									<select id="slbranch" name="slbranch" class="form-control input-medium">
 										<option value="-1">--Choose Branch--</option>
 										<!-- chưa có nội dung -->

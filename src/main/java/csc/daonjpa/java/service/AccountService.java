@@ -16,4 +16,8 @@ public class AccountService {
 	{
 		return accountDAO.checkAccount(accountName);
 	}
+	
+	public String getNameById(long idAccount) {
+		return accountDAO.getNameById(idAccount);
+	}
 }

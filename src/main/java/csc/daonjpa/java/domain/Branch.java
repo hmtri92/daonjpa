@@ -1,5 +1,6 @@
 package csc.daonjpa.java.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,16 +13,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table (name = "Branch")
-public class Branch {
+public class Branch implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.AUTO)
 	@Column (name = "id_branch")
-	private long id;
+	private int id;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "id_bank")
 	private Bank bank;
 	
@@ -39,18 +48,18 @@ public class Branch {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Branch(long id, Bank bank, String nameBranch) {
+	public Branch(int id, Bank bank, String nameBranch) {
 		super();
 		this.id = id;
 		this.bank = bank;
 		this.nameBranch = nameBranch;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

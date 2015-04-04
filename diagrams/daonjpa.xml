@@ -2,9 +2,9 @@
 	<entity>
 		<entity-name>csc.daonjpa.java.domain.Account</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>168</entity-height>
+		<entity-height>208</entity-height>
 		<entity-X-Coordinate>400</entity-X-Coordinate>
-		<entity-Y-Coordinate>221</entity-Y-Coordinate>
+		<entity-Y-Coordinate>212</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -13,31 +13,9 @@
 	<entity>
 		<entity-name>csc.daonjpa.java.domain.Customer</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>246</entity-height>
-		<entity-X-Coordinate>682</entity-X-Coordinate>
-		<entity-Y-Coordinate>20</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>csc.daonjpa.java.domain.BaseInfo</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>108</entity-height>
-		<entity-X-Coordinate>180</entity-X-Coordinate>
-		<entity-Y-Coordinate>30</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>csc.daonjpa.java.domain.Card</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>108</entity-height>
-		<entity-X-Coordinate>400</entity-X-Coordinate>
-		<entity-Y-Coordinate>30</entity-Y-Coordinate>
+		<entity-height>286</entity-height>
+		<entity-X-Coordinate>730</entity-X-Coordinate>
+		<entity-Y-Coordinate>13</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -55,11 +33,11 @@
 	</entity>
 
 	<entity>
-		<entity-name>csc.daonjpa.java.domain.Bank</entity-name>
+		<entity-name>csc.daonjpa.java.domain.BaseInfo</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>146</entity-height>
-		<entity-X-Coordinate>685</entity-X-Coordinate>
-		<entity-Y-Coordinate>517</entity-Y-Coordinate>
+		<entity-height>108</entity-height>
+		<entity-X-Coordinate>180</entity-X-Coordinate>
+		<entity-Y-Coordinate>30</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -68,20 +46,42 @@
 	<entity>
 		<entity-name>csc.daonjpa.java.domain.Branch</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>166</entity-height>
-		<entity-X-Coordinate>400</entity-X-Coordinate>
-		<entity-Y-Coordinate>427</entity-Y-Coordinate>
+		<entity-height>186</entity-height>
+		<entity-X-Coordinate>50</entity-X-Coordinate>
+		<entity-Y-Coordinate>452</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
 	</entity>
 
 	<entity>
-		<entity-name>csc.daonjpa.java.domain.TagetAccount</entity-name>
+		<entity-name>csc.daonjpa.java.domain.Bank</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>148</entity-height>
-		<entity-X-Coordinate>681</entity-X-Coordinate>
-		<entity-Y-Coordinate>307</entity-Y-Coordinate>
+		<entity-height>166</entity-height>
+		<entity-X-Coordinate>482</entity-X-Coordinate>
+		<entity-Y-Coordinate>546</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>csc.daonjpa.java.domain.Card</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>108</entity-height>
+		<entity-X-Coordinate>400</entity-X-Coordinate>
+		<entity-Y-Coordinate>30</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>csc.daonjpa.java.domain.TargetAccount</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>168</entity-height>
+		<entity-X-Coordinate>730</entity-X-Coordinate>
+		<entity-Y-Coordinate>367</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
