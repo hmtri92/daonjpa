@@ -22,6 +22,9 @@ public class TransferDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/*
+	 * Get all Bank
+	 */
 	public List<Bank> getBank() {
 		TypedQuery<Bank> query = entityManager.createQuery(
 				"SELECT c FROM Bank c", Bank.class);
@@ -36,6 +39,9 @@ public class TransferDAO {
 		return results;
 	}
 
+	/*
+	 * 
+	 */
 	@Transactional
 	public int insertTransaction(long amount, Date date, long id_branch,
 			long id_receiveaccount, long id_sendaccount) {
@@ -50,9 +56,13 @@ public class TransferDAO {
 		return query.executeUpdate();
 	}
 
+	/*
+	 * Tranfer money and log transaction
+	 */
 	@Transactional
 	public boolean sendAmount(long sendAccount_id, long rece_id, long amount,
 			int banch_id) {
+		
 		// get money rece account
 		String sql = "SELECT a.availableAmount FROM Account a WHERE a.id = :rece_id";
 		TypedQuery<Long> query = entityManager.createQuery(sql, Long.class); 

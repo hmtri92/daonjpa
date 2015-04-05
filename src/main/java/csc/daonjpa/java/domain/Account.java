@@ -7,7 +7,6 @@ import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -19,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Entity class for Account table. This is a simple POJO class with annotations
  * to define mapping with DB table
  * 
- * @author nvu3
+ * @author Minh Tri
  *
  */
 @Entity
@@ -27,6 +26,22 @@ import org.hibernate.validator.constraints.NotEmpty;
 @AttributeOverrides({ @AttributeOverride(name = "availableAmount", column = @Column(name = "availableAmount")) })
 public class Account extends BaseInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
+
+	public List<TargetAccount> getAccountNumbers() {
+		return accountNumbers;
+	}
+
+	public void setAccountNumbers(List<TargetAccount> accountNumbers) {
+		this.accountNumbers = accountNumbers;
+	}
+
+	public List<TargetAccount> getAccountOwner() {
+		return accountOwner;
+	}
+
+	public void setAccountOwner(List<TargetAccount> accountOwner) {
+		this.accountOwner = accountOwner;
+	}
 
 	@NotEmpty
 	@Column(name = "accountName")

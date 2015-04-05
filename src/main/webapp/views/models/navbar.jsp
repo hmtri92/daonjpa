@@ -19,6 +19,7 @@
 			<ul style="font-size: 18px" class="nav navbar-nav">
 				<li><a href="transferview">Transfer Money</a></li>
 				<li><a href="targetAccount">Target Account</a></li>
+				<li><a href="viewTransaction">Search transaction</a></li>
 				<li class="dropdown">
 		          <a style="font-size: 18px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 		          	Cards <span class="caret"></span></a>

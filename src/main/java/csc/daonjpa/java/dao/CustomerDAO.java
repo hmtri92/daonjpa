@@ -16,10 +16,17 @@ public class CustomerDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/*
+	 * Get Customer by id
+	 */
+	@Transactional
 	public Customer getCustomerByLoginId(String loginId) {
 		return entityManager.find(Customer.class, loginId);
 	}
 
+	/*
+	 * Update infomation of Customer
+	 */
 	@Transactional
 	public Customer updateCustomerInfoById(Customer cus) {
 		Customer customer = entityManager.find(Customer.class, cus.getLoginId());
@@ -31,6 +38,9 @@ public class CustomerDAO {
 		return customer;
 	}
 	
+	/*
+	 * Create customer
+	 */
 	@Transactional
 	public boolean createCustomer(Customer customer) {
 		try {

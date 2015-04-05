@@ -29,6 +29,22 @@ public class Branch implements Serializable {
 	@Column (name = "id_branch")
 	private int id;
 	
+	public List<LogTransaction> getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(List<LogTransaction> transaction) {
+		this.transaction = transaction;
+	}
+
+	public List<TargetAccount> getTargetAccounts() {
+		return targetAccounts;
+	}
+
+	public void setTargetAccounts(List<TargetAccount> targetAccounts) {
+		this.targetAccounts = targetAccounts;
+	}
+
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name = "id_bank")

@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import csc.daonjpa.java.domain.Bank;
 
@@ -16,6 +17,11 @@ public class BankDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/*
+	 * Get all bank of database
+	 * Return List<Bank>
+	 */
+	@Transactional
 	public List<Bank> getBank() {
 		TypedQuery<Bank> query = entityManager.createQuery(
 				"SELECT c FROM Bank c", Bank.class);

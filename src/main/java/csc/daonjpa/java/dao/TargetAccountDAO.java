@@ -17,6 +17,9 @@ public class TargetAccountDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 
+	/*
+	 * Add new targetAccount for accountOwner
+	 */
 	@Transactional
 	public boolean addNewTarget(String accountOwner, String accountNumber, String nameTarget,
 			int bank, int branch) {
@@ -37,6 +40,9 @@ public class TargetAccountDAO {
 		}
 	}
 
+	/*
+	 * Get TargetAccount by idAccount Owner
+	 */
 	@Transactional
 	public List<TargetAccount> getTargetByAccount(long accountOwner) {
 		List<TargetAccount> targetAccounts = null;
@@ -50,6 +56,9 @@ public class TargetAccountDAO {
 		return targetAccounts;
 	}
 
+	/*
+	 * 
+	 */
 	public TargetAccount getAccountNumber(long recentAccount) {
 		TargetAccount targetAccount = entityManager.find(TargetAccount.class, recentAccount);
 		

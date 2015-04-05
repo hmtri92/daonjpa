@@ -18,6 +18,9 @@ public class BranchDAO {
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	/*
+	 * Get Branch by bankId
+	 */
 	@Transactional
 	public List<Branch> getBranchBy(int bankId) {
 		List<Branch> branchs = new ArrayList<Branch>();
