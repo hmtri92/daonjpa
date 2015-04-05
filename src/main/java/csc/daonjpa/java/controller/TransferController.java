@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import csc.daonjpa.java.domain.Account;
@@ -21,7 +22,10 @@ import csc.daonjpa.java.domain.Bank;
 import csc.daonjpa.java.domain.Branch;
 import csc.daonjpa.java.domain.Customer;
 import csc.daonjpa.java.domain.LogTransaction;
+import csc.daonjpa.java.domain.TargetAccount;
+import csc.daonjpa.java.service.AccountService;
 import csc.daonjpa.java.service.BankService;
+import csc.daonjpa.java.service.TargetAccountService;
 import csc.daonjpa.java.service.TransferService;
 
 @Controller
@@ -32,6 +36,12 @@ public class TransferController {
 	
 	@Autowired
 	BankService bankService;
+	
+	@Autowired
+	TargetAccountService targetService;
+	
+	@Autowired
+	AccountService accountService;
 
 	private List<Account> listAccount;
 
@@ -56,12 +66,22 @@ public class TransferController {
 			return md;
 		}
 		
-		List<Bank> listBank = null;
+		List<Bank> listBank = bankService.getListBank();
 		listAccount = ((Customer) cus).getAccounts();
-		listBank = bankService.getListBank();
+		
 		md.addObject("listbank", listBank);
 		md.addObject("listaccount", listAccount);
 		return md;
+	}
+	
+	@RequestMapping (value = "/getTargetByAccount", method = RequestMethod.POST)
+	@ResponseBody
+	public List<TargetAccount> getTargetByAccount(HttpServletRequest request, HttpServletResponse response) {
+		long accountOwner = Long.parseLong(request.getParameter("idAccount"));
+		
+		List<TargetAccount> targets = targetService.getTargetByAccount(accountOwner);
+		
+		return targets;
 	}
 
 	@RequestMapping(value = "/ajaxGetbranch/{id}", method = RequestMethod.GET)
@@ -73,21 +93,25 @@ public class TransferController {
 		md.addObject("listbranch", listBranch);
 		return md;
 	}
-
+	
 	@RequestMapping(value = "/submitTransfer", method = RequestMethod.POST)
 	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
 			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView md = new ModelAndView("transfermoney");
+		ModelAndView model = new ModelAndView("transfermoney");
 		
-		boolean recentAccountState = request.getParameter("recentAccount") != null;
+		boolean recentAccountState = request.getParameter("checkBox") != null;
+		String message = "";
 		
 		if (recentAccountState == true) {
-			
+			message = transferInTarget(request, response);
 		} else {
-			
+			message = transferNewAccount(request, response);
 		}
 		
-		String accountname = request.getParameter("accountname").trim();
+		model.addObject("message", message);
+		return model;
+		
+		/*String accountname = request.getParameter("accountname").trim();
 		long amount = Long.parseLong(request.getParameter("amount"));
 		Date date = new Date();
 		
@@ -103,32 +127,45 @@ public class TransferController {
 		} else {
 			md.addObject("message", "Transfer unseccessfull");
 			return md;
-		}
-
+		}*/
 	}
-/*	@RequestMapping(value = "/submitTransfer", method = RequestMethod.POST)
-	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
-			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView md = new ModelAndView("transfermoney");
-		
-		String accountname = request.getParameter("accountname").trim();
+	
+	private String transferInTarget(HttpServletRequest request, HttpServletResponse response) {
+		long sendAccount_id = Long.parseLong(request.getParameter("sendaccount"));
 		long amount = Long.parseLong(request.getParameter("amount"));
-		Date date = new Date();
+		long recentAccount_id = Long.parseLong(request.getParameter("recentAccount"));
 		
-		// SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss DD/MM/YY");
-		long idbranch = Long.parseLong(request.getParameter("slbranch"));
-		long idsend = Long.parseLong(request.getParameter("sendaccount"));
-		Account account = transferService.checkAccount(accountname);
-		if (account != null && idsend != account.getId()) {
-			transferService.insertTransaction(amount, date, idbranch,
-					account.getId(), idsend);
-			md.addObject("message", "Transfer Successfully");
-			return md;
+		accountService.checkMoneyByAccount(sendAccount_id, amount);
+		
+		if (checkMoney(sendAccount_id, amount)) {
+			
+			TargetAccount recentAccount = targetService.getAccountNumber(recentAccount_id);
+			
+			transferService.sendAmount(sendAccount_id, recentAccount.getAccountNumber().getId(), 
+					amount, recentAccount.getBranch().getId());
+			return "Success";
 		} else {
-			md.addObject("message", "Transfer unseccessfull");
-			return md;
+			return "Not enough money";
 		}
-		
 	}
-*/
+	
+	private String transferNewAccount(HttpServletRequest request, HttpServletResponse response) {
+		long sendAccount_id = Long.parseLong(request.getParameter("sendaccount"));
+		long amount = Long.parseLong(request.getParameter("amount"));
+		long recentAccount_id = Long.parseLong(request.getParameter("accountNumber"));
+		int banch_id = Integer.parseInt(request.getParameter("branchlist"));
+		
+		if (checkMoney(sendAccount_id, amount)) {
+			transferService.sendAmount(sendAccount_id, recentAccount_id, 
+					amount, banch_id);
+			return "Success";
+		} else {
+			return "Not enough money";
+		}
+	}
+	
+	private boolean checkMoney(long account, long amount) {
+		return accountService.checkMoneyByAccount(account, amount);
+	}
+	
 }

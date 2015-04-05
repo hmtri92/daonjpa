@@ -19,6 +19,7 @@
 <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/myScrip.js"></script>
 
 </head>
 <body style="padding-top: 100px !important">
@@ -65,15 +66,22 @@
 							</div>
 							
 							<div class="form-group">
+								<label class="col-md-3 control-label ">Name Target: </label>
+								<div class="col-md-5">
+									<input type="text" name="nameTarget" id="nameTarget" class="form-control"/>
+								</div>
+							</div>
+							
+							<div class="form-group">
 								<label class="col-md-3 control-label">Account number: </label>
 								<div class="col-md-5">
 									<input type="text" name="accountNumber" id="accountNumber" class="form-control"/>
 								</div>
-								<button onclick="checkName();" class="btn btn-primary" type="button">Check name</button>
+								<button onclick="checkName();" class="btn btn-primary" type="button"><span class="glyphicon glyphicon-refresh"></span></button>
 							</div>
 							
 							<div class="form-group">
-								<label class="col-md-3 control-label ">Name: </label>
+								<label class="col-md-3 control-label ">Name Account: </label>
 								<div class="col-md-5">
 									<input type="text" name="name" id="name" class="form-control" disabled="disabled" />
 								</div>
@@ -83,7 +91,7 @@
 							<div class="form-group">
 								<div class = "col-md-5 col-md-offset-4">
 									<button class="btn btn-primary" type="submit">Save</button>
-									<button class="btn btn-primary" type="button">Cancel </button>
+									<button class="btn btn-primary" type="button" onclick="goHome();">Cancel </button>
 								</div>
 							</div>
 						</form>
@@ -95,43 +103,6 @@
 	
 	<!-- start footer -->
 	<%@ include file="models/footer.jsp"%>
-	
-	<script type="text/javascript">
-
-		function loadBranch() {
-			$("#branchlist")
-			.empty()
-    		.append('<option value="-1">--Choose Branch--</option>')
-			$.ajax({
-				type : "POST",
-				url : "getBranch",
-				data : {"idBank" : $("#banklist").val()},
-				success : function(results) {
-					$.each(results, function(i, item){
-						$("#branchlist").append($("<option></option>").text(this.nameBranch).val(this.id));
-					});
-				},
-				error: function(){      
-			   		alert("Error while request..");
-			  	}
-			});
-		}
-
-		function checkName() {
-			$.ajax({
-				type : "POST",
-				url : "checkName",
-				data : {"idAccount" : $("#accountNumber").val()},
-				success : function(result) {
-					$("#name").val(result);
-				},
-				error: function(){      
-			   		alert("Error while request..");
-			  	}
-			});
-		}
-
-	</script>
 
 </body>
 </html>

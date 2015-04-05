@@ -82,10 +82,11 @@ public class TargetAccountController {
 	public ModelAndView registerTargetAccount(HttpServletRequest request, HttpServletResponse response) {
 		String accountOwner = request.getParameter("sendaccount");
 		String accountNumber = request.getParameter("accountNumber");
+		String nameTarget = request.getParameter("nameTarget");
 		int bank = Integer.parseInt(request.getParameter("banklist"));
 		int branch = Integer.parseInt(request.getParameter("branchlist"));
 		
-		boolean result = targetService.addNewTarget(accountOwner, accountNumber, bank, branch);
+		boolean result = targetService.addNewTarget(accountOwner, accountNumber, nameTarget, bank, branch);
 		
 		ModelAndView model = new ModelAndView("home");
 		if (result) {

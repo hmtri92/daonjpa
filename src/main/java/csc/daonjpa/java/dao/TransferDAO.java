@@ -49,4 +49,51 @@ public class TransferDAO {
 		query.setParameter(5, date);
 		return query.executeUpdate();
 	}
+
+	@Transactional
+	public boolean sendAmount(long sendAccount_id, long rece_id, long amount,
+			int banch_id) {
+		// get money rece account
+		String sql = "SELECT a.availableAmount FROM Account a WHERE a.id = :rece_id";
+		TypedQuery<Long> query = entityManager.createQuery(sql, Long.class); 
+		query.setParameter("rece_id", rece_id);
+		long moneyrece = query.getSingleResult();
+		moneyrece += amount;
+		
+		// set money rece account
+		sql = "UPDATE Account a SET availableAmount = :moneyrece WHERE a.id = :id";
+		int count = entityManager.createQuery(sql)
+					.setParameter("moneyrece", moneyrece)
+					.setParameter("id", rece_id)
+					.executeUpdate();
+		
+		// get money send account
+		sql = "SELECT a.availableAmount FROM Account a WHERE a.id = :sendAccount_id";
+		query = entityManager.createQuery(sql, Long.class);
+		query.setParameter("sendAccount_id", sendAccount_id);
+		moneyrece = query.getSingleResult();
+		moneyrece -= amount;
+		
+		// set money send account
+		sql = "UPDATE Account a SET availableAmount = :moneyrece WHERE a.id = :id";
+		count = entityManager.createQuery(sql)
+				.setParameter("moneyrece", moneyrece)
+				.setParameter("id", sendAccount_id)
+				.executeUpdate();
+		
+		// log transaction
+		sql = "INSERT INTO LogTransaction(sendAccount, receiveAccount, id_branch, date, amount)"
+				+ "VALUE(:sendAccount, :receiveAccount, :id_branch, :date, :amount)";
+		entityManager.createNativeQuery(sql)
+		.setParameter("sendAccount", sendAccount_id)
+		.setParameter("receiveAccount", rece_id)
+		.setParameter("id_branch", banch_id)
+		.setParameter("date", new Date())
+		.setParameter("amount", amount)
+		.executeUpdate();
+		
+		return true;
+	}
+
+	
 }

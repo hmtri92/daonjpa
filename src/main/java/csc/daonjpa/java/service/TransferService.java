@@ -40,4 +40,10 @@ public class TransferService {
 	{
 		return accountDAO.checkAccount(accountName);
 	}
+
+	public boolean sendAmount(long sendAccount_id, long rece_id, long amount, int banch_id) {
+		return transferDAO.sendAmount(sendAccount_id, rece_id, amount, banch_id );
+		
+	}
+
 }

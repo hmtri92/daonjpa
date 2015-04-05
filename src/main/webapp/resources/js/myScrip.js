@@ -59,3 +59,75 @@ $("#registerSubmit").click(function(event){
 			}
 		});
 	});
+
+function loadBranch() {
+	$("#branchlist")
+	.empty()
+	.append('<option value="-1">--Choose Branch--</option>')
+	$.ajax({
+		type : "POST",
+		url : "getBranch",
+		data : {"idBank" : $("#banklist").val()},
+		success : function(results) {
+			$.each(results, function(i, item){
+				$("#branchlist").append($("<option></option>").text(this.nameBranch).val(this.id));
+			});
+		},
+		error: function(){      
+	   		alert("Error while request..");
+	  	}
+	});
+}
+
+function checkName() {
+	$.ajax({
+		type : "POST",
+		url : "checkName",
+		data : {"idAccount" : $("#accountNumber").val()},
+		success : function(result) {
+			$("#name").val(result);
+		},
+		error: function(){      
+	   		alert("Error while request..");
+	  	}
+	});
+}
+
+function goHome() {
+	location.href = "home";
+}
+
+function changeCheckBox() {
+	if ($("#checkBox").prop("checked")) {
+		$("#recentAccount").removeAttr('disabled');
+		$("#accountNumber").attr('disabled','disabled');
+		$("#banklist").attr('disabled','disabled');
+		$("#branchlist").attr('disabled','disabled');
+		
+	} else {
+		$("#accountNumber").removeAttr('disabled');
+		$("#banklist").removeAttr('disabled');
+		$("#branchlist").removeAttr('disabled');
+		$("#recentAccount").attr('disabled','disabled');
+	}
+}
+
+function loadTarget() {
+	$("#recentAccount")
+	.empty()
+	.append('<option value="-1">--Choose Recent Account--</option>')
+	$.ajax({
+		type : "POST",
+		url : "getTargetByAccount",
+		data : {"idAccount" : $("#sendaccount").val()},
+		success : function(results) {
+			$.each(results, function(i, item){
+				$("#recentAccount").append($("<option></option>").text(this.name).val(this.id_taget));
+			});
+		},
+		error: function(){      
+	   		alert("Error while request..");
+	  	}
+	});
+}
+

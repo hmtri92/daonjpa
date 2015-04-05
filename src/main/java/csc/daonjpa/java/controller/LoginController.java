@@ -50,7 +50,7 @@ public class LoginController {
 		return md;
 	}
 	
-	@RequestMapping( value = "/logout", method = RequestMethod.GET)
+	@RequestMapping( value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if ((session != null) && (request.isRequestedSessionIdValid())) {

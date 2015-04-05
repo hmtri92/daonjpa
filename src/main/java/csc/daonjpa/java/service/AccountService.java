@@ -20,4 +20,8 @@ public class AccountService {
 	public String getNameById(long idAccount) {
 		return accountDAO.getNameById(idAccount);
 	}
+
+	public boolean checkMoneyByAccount(long account, long moneySend) {
+		return accountDAO.checkMoneyByAccount(account, moneySend);
+	}
 }

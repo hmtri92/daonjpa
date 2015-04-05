@@ -33,6 +33,19 @@ public class AccountDAO {
 		return account.getAccountName();
 	}
 
+	public boolean checkMoneyByAccount(long account, long moneySend) {
+		String sql = "SELECT acc.availableAmount FROM Account acc WHERE acc.id = :account";
+		TypedQuery<Long> query = entityManager.createQuery(sql, Long.class);
+		query.setParameter("account", account);
+		long availableAmount = query.getSingleResult();
+		
+		if ((availableAmount - moneySend) > 50000) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	/*	*//**
 	 * @return all accounts from Account table
 	 */
