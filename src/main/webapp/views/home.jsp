@@ -64,12 +64,14 @@
 					</div>
 				</div>
 				<!-- END SAMPLE TABLE PORTLET-->
-
-
-				<div class="clear">&nbsp;</div>
-
-				<!-- start footer -->
-				<%@ include file="models/footer.jsp"%>
 			</div>
+		</div>
+	</div>
+
+
+	<div class="clear">&nbsp;</div>
+
+	<!-- start footer -->
+	<%@ include file="models/footer.jsp"%>
 </body>
 </html>

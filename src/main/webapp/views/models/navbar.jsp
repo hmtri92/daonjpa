@@ -19,6 +19,14 @@
 			<ul style="font-size: 18px" class="nav navbar-nav">
 				<li><a href="transferview">Transfer Money</a></li>
 				<li><a href="targetAccount">Target Account</a></li>
+				<li class="dropdown">
+		          <a style="font-size: 18px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+		          	Cards <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li style="padding-bottom: 10px"><a href="viewCard"><i class="glyphicon glyphicon-credit-card"></i>  View card</a></li>
+		            <li><a href="addCard"><i class="glyphicon glyphicon-plus-sign"></i>  Add Card</a></li>
+		          </ul>
+		        </li>
 			</ul>
 			<!-- Dropdow menu -->
 			<ul class="nav navbar-nav navbar-right">

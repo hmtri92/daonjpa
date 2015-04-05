@@ -51,12 +51,6 @@ public class TargetAccountDAO {
 	}
 
 	public TargetAccount getAccountNumber(long recentAccount) {
-//		String sql = "SELECT t.accountNumber.id FROM TargetAccount t WHERE t.id_taget = :recentAccount";
-//		TypedQuery<Long> query = entityManager.createQuery(sql, Long.class);
-//		query.setParameter("recentAccount", recentAccount);
-//		
-//		long idAccount = query.getSingleResult();
-		
 		TargetAccount targetAccount = entityManager.find(TargetAccount.class, recentAccount);
 		
 		return targetAccount;

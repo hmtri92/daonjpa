@@ -33,6 +33,13 @@ public class BaseInfo implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public BaseInfo(long id, Long availableAmount) {
+		super();
+		this.id = id;
+		this.availableAmount = availableAmount;
+	}
 
 	public long getId() {
 		return id;
@@ -41,14 +48,6 @@ public class BaseInfo implements Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
-
-	/*public BaseInfo(long id, String number, Long availableAmount) {
-		super();
-		this.id = id;
-		this.availableAmount = availableAmount;
-	}*/
 
 	public Long getAvailableAmount() {
 		return availableAmount;

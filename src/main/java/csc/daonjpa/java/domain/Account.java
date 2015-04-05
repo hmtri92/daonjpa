@@ -48,12 +48,21 @@ public class Account extends BaseInfo implements Serializable {
 	@OneToMany(mappedBy = "sendAccount")
 	private List<LogTransaction> sendAccount;
 	
-	@OneToMany (mappedBy = "accountNumber", fetch = FetchType.LAZY)
+	@OneToMany (mappedBy = "accountNumber")
 	private List<TargetAccount> accountNumbers;
 	
 	@OneToMany (mappedBy = "accountOwner")
 	private List<TargetAccount> accountOwner;
 
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Account(long id, Long availableAmount) {
+		super(id, availableAmount);
+		// TODO Auto-generated constructor stub
+	}
 
 	public Customer getCustomer() {
 		return customer;
@@ -115,4 +124,5 @@ public class Account extends BaseInfo implements Serializable {
 	public List<LogTransaction> getSendAccount() {
 		return sendAccount;
 	}
+	
 }

@@ -3,8 +3,10 @@ package csc.daonjpa.java.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -54,7 +56,7 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy="customer")
 	private List<Account> accounts;// = new ArrayList<Account>();
 	
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Card> cards;// = new ArrayList<Card>();
 	
 	

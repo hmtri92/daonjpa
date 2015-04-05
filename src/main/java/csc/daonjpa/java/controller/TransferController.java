@@ -53,7 +53,7 @@ public class TransferController {
 		this.listAccount = listAccount;
 	}
 
-	@RequestMapping(value = "/transferview", method = RequestMethod.GET)
+	@RequestMapping(value = "/transferview", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView transfer(Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 		HttpSession session = request.getSession();
@@ -97,7 +97,7 @@ public class TransferController {
 	@RequestMapping(value = "/submitTransfer", method = RequestMethod.POST)
 	public ModelAndView transfer(@ModelAttribute("log") LogTransaction log,
 			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView model = new ModelAndView("transfermoney");
+		ModelAndView model = new ModelAndView();
 		
 		boolean recentAccountState = request.getParameter("checkBox") != null;
 		String message = "";
@@ -108,26 +108,11 @@ public class TransferController {
 			message = transferNewAccount(request, response);
 		}
 		
+		
 		model.addObject("message", message);
+		model.setViewName("forward:/transferview");
 		return model;
 		
-		/*String accountname = request.getParameter("accountname").trim();
-		long amount = Long.parseLong(request.getParameter("amount"));
-		Date date = new Date();
-		
-		// SimpleDateFormat ft = new SimpleDateFormat("hh:mm:ss DD/MM/YY");
-		long idbranch = Long.parseLong(request.getParameter("slbranch"));
-		long idsend = Long.parseLong(request.getParameter("sendaccount"));
-		Account account = transferService.checkAccount(accountname);
-		if (account != null && idsend != account.getId()) {
-			transferService.insertTransaction(amount, date, idbranch,
-					account.getId(), idsend);
-			md.addObject("message", "Transfer Successfully");
-			return md;
-		} else {
-			md.addObject("message", "Transfer unseccessfull");
-			return md;
-		}*/
 	}
 	
 	private String transferInTarget(HttpServletRequest request, HttpServletResponse response) {

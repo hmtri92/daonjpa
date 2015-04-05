@@ -39,7 +39,7 @@ public class TargetAccount {
 	private Branch branch;
 	
 	@NotEmpty
-	@ManyToOne (fetch = FetchType.LAZY)
+	@ManyToOne
 	@JsonIgnore
 	@JoinColumn (name = "accountNumber")
 	private Account accountNumber;

@@ -45,6 +45,11 @@
 					<div class="panel-body">
 						<form class="form-horizontal" action="submitTransfer" method="POST" style="padding 0 auto">
 							<div class="form-group">
+								<div class="alert alert-success" role="alert">
+									${message} 
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="col-md-3 control-label" for="sendaccount">Account Send: </label>
 								<div class="col-md-8">
 									<select id="sendaccount" name="sendaccount" class="form-control input-medium" onchange="loadTarget();">
@@ -116,10 +121,6 @@
 								</div>
 							</div>
 				
-							<div>
-								${message} 
-							</div>
-							
 							<div class="form-group">
 								<div class = "col-md-5 col-md-offset-4">
 									<button class="btn btn-primary" type="submit" >Send</button>

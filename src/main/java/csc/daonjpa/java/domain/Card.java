@@ -34,18 +34,24 @@ public class Card extends BaseInfo implements Serializable {
 	@ManyToOne
 	@JoinColumn (name = "loginId")
 	private Customer customer;
-	
-	/*public Card() {
+
+
+	public Card(long id, Long availableAmount, String cardType, Customer customer) {
+		super(id, availableAmount);
+		this.cardType = cardType;
+		this.customer = customer;
+	}
+
+	public Card() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Card(Long id, String number, Long availableAmount, String cardType) {
-		super(id, number, availableAmount);
-		this.cardType = cardType;
+	public Card(long id, Long availableAmount) {
+		super(id, availableAmount);
 		// TODO Auto-generated constructor stub
 	}
-*/
+
 	public String getCardType() {
 		return cardType;
 	}
@@ -61,5 +67,4 @@ public class Card extends BaseInfo implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
 }
